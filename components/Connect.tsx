@@ -1,7 +1,7 @@
 'use client';
 
-export default function Connect({ name, supabase}) {
-    const handleConnectClick = (name) => {
+export default function Connect({ name, supabase}: any) {
+    const handleConnectClick = (name: any) => {
         switch (name) {
             case 'Instagram':
                 // signInWithInstagram();
@@ -15,7 +15,7 @@ export default function Connect({ name, supabase}) {
         }
     }
 
-    async function signInWithTwitter(supabase) {
+    async function signInWithTwitter(supabase: any) {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'twitter',
         })
