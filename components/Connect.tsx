@@ -1,6 +1,10 @@
 'use client';
+import { createClient } from '@supabase/supabase-js';
 
-export default function Connect({ name, supabase}: any) {
+
+export default function Connect({ name }: any) {
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '');
+
     const handleConnectClick = (name: any) => {
         switch (name) {
             case 'Instagram':
@@ -10,12 +14,12 @@ export default function Connect({ name, supabase}: any) {
                 // signInWithTikTok();
                 break;
             case 'Twitter':
-                signInWithTwitter(supabase);
+                signInWithTwitter();
                 break;
         }
     }
 
-    async function signInWithTwitter(supabase: any) {
+    async function signInWithTwitter() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'twitter',
         })

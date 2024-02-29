@@ -1,7 +1,6 @@
 'use server'
 
 import Image from "next/image";
-import { createClient } from "@/utils/supabase/server";
 import Connect from "@/components/Connect";
 
 const socialNetworks = [
@@ -20,7 +19,6 @@ const socialNetworks = [
 ]
 
 export default async function page() {
-  const supabase = createClient();
   
   return (
     <div className="w-full p-10">
@@ -36,7 +34,7 @@ export default async function page() {
             />
             <div className="mx-10">
               <p className="text-black text-2xl font-semibold mb-2">{network.name}</p>
-              <Connect name={network.name} supabase={supabase}/>
+              <Connect name={network.name}/>
             </div>
           </div>
         ))}
