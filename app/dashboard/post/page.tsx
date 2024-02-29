@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function page() {
   const [showTextField, setShowTextField] = useState(false);
@@ -8,7 +9,9 @@ export default function page() {
   const [firstGenerate, setFirstGenerate] = useState(false);
   const [userInput, setUserInput] = useState('');
 
-  console.log(localStorage.getItem('supabase.auth.token'));
+  const pathname = usePathname();
+
+  console.log(pathname);
 
   const handleGenerateClick = () => {
     // Call your API here and set the text
