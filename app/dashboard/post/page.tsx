@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function page() {
   const [showTextField, setShowTextField] = useState(false);
@@ -9,16 +8,39 @@ export default function page() {
   const [firstGenerate, setFirstGenerate] = useState(false);
   const [userInput, setUserInput] = useState('');
 
-  const pathname = usePathname();
+  let url = '';
+  useEffect(() => {
+    url = window.location.href;
+  }, []);
+  
+  let access_token = '';
+  let expires_at = '';
+  if (url.includes('access_token') && url.includes('expires_at')) {
+    access_token = url.split('access_token=')[1];
+    expires_at = url.split('expires_at=')[1];
+  }
 
-  console.log(pathname);
+  const getData = async () => {
+    const API = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(`${API}/generate_post` as string, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: userInput })
+    });
+    const data = await response.json();
+    return data;
+  }
 
   const handleGenerateClick = () => {
     // Call your API here and set the text
-    setText('Your API response text here');
-    setShowTextField(true);
-    setFirstGenerate(true);
-    console.log('generated text')
+    getData()
+      .then(data => {
+        setText(data);
+        setShowTextField(true);
+        setFirstGenerate(true);
+      });
   };
 
   const handlePublishClick = () => {
