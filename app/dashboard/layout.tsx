@@ -33,6 +33,8 @@ export default async function Layout({
     return redirect("/login");
   }
 
+  console.log(user);
+
   return (
     <div className="min-h-screen flex flex-col w-full">
       <header>
@@ -47,12 +49,12 @@ export default async function Layout({
         </div>
       </header>
       <div className="flex flex-col md:flex-row flex-1">
-        <aside className="bg-fuchsia-100 w-full md:w-60">
+        <aside className="bg-blue-100 w-full md:w-60">
           <nav>
             <ul>
               {menuItems.map((item) => (
                 <li className='m-2' key={item.href}>
-                  <Link href={`/dashboard/${item.href}`}><span className="flex p-2 bg-fuchsia-200 rounded hover:bg-fuchsia-400 cursor-pointer">{item.title}</span></Link>
+                  <Link href={`/dashboard/${item.href}`}><span className="flex p-2 bg-blue-200 rounded hover:bg-blue-400 cursor-pointer">{item.title}</span></Link>
                 </li>
               ))}
             </ul>
