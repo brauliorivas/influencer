@@ -8,6 +8,8 @@ export default function page() {
   const [firstGenerate, setFirstGenerate] = useState(false);
   const [userInput, setUserInput] = useState('');
 
+  console.log(localStorage.getItem('supabase.auth.token'));
+
   const handleGenerateClick = () => {
     // Call your API here and set the text
     setText('Your API response text here');

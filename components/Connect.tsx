@@ -1,7 +1,6 @@
 'use client';
 import { createClient } from '@supabase/supabase-js';
 
-
 export default function Connect({ name }: any) {
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '');
 
@@ -22,8 +21,8 @@ export default function Connect({ name }: any) {
     async function signInWithTwitter() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'twitter',
-        })
-        console.log(data);
+        });
+        localStorage.setItem('supabase.auth.token', JSON.stringify(data));
     }
 
     return (
