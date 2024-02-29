@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/server";
+import Connect from "@/components/Connect";
 
 const socialNetworks = [
   {
@@ -19,29 +20,8 @@ const socialNetworks = [
 ]
 
 export default async function page() {
-  const handleConnectClick = (name: any) => {
-    switch (name) {
-      case 'Instagram':
-        // signInWithInstagram();
-        break;
-      case 'TikTok':
-        // signInWithTikTok();
-        break;
-      case 'Twitter':
-        signInWithTwitter();
-        break;
-    }
-  }
-
-  async function signInWithTwitter() {
-    const supabase = createClient();
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'twitter',
-    })
-    console.log(data);
-  }
+  const supabase = createClient();
   
-
   return (
     <div className="w-full p-10">
       <p className="text-black text-4xl font-semibold mb-10">Connections</p>
@@ -56,7 +36,7 @@ export default async function page() {
             />
             <div className="mx-10">
               <p className="text-black text-2xl font-semibold mb-2">{network.name}</p>
-              <button onClick={() => {handleConnectClick(network.name)}} className="g-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Connect</button>
+              <Connect name={network.name} supabase={supabase}/>
             </div>
           </div>
         ))}
