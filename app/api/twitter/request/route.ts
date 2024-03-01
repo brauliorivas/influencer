@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function GET() {
     const twitter_api = 'https://api.twitter.com/';
 
     const req_token = await fetch(twitter_api + 'oauth/request_token', {
