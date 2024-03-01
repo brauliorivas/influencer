@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server';
+
 export async function POST(request: Request) {
     const body = JSON.parse(await request.text());
     const token = body.token;
@@ -20,5 +22,5 @@ export async function POST(request: Request) {
 
     const response = await fetch(API as string, requestOptions);
     const data = await response.json();
-    return data;
+    return NextResponse.json(data);
 }
