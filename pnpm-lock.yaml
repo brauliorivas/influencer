@@ -35,6 +35,9 @@ dependencies:
   twitter-api-sdk:
     specifier: ^1.2.1
     version: 1.2.1(encoding@0.1.13)
+  twitter-api-v2:
+    specifier: ^1.16.0
+    version: 1.16.0
   typescript:
     specifier: 5.3.3
     version: 5.3.3
@@ -1178,6 +1181,10 @@ packages:
       node-fetch: 2.7.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /twitter-api-v2@1.16.0:
+    resolution: {integrity: sha512-e7wzWqx5oQZ9IUc2xt8JiJ84ioVGlmjmca1h0NwCKx2AFfKXDePmQa42gcBDe0qau9YaHsIpzO9z5SX1fmb+IQ==}
     dev: false
 
   /typescript@5.3.3:
