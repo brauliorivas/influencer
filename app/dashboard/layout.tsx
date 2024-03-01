@@ -33,8 +33,6 @@ export default async function Layout({
     return redirect("/login");
   }
 
-  console.log(user);
-
   return (
     <div className="min-h-screen flex flex-col w-full">
       <header>

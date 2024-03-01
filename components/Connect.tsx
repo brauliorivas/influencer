@@ -1,5 +1,5 @@
 'use client';
-// import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
 export default function Connect({ name }: any) {
     const getURL = () => {
@@ -7,7 +7,7 @@ export default function Connect({ name }: any) {
         return url;
     }
 
-    // const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '');
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '');
 
     const handleConnectClick = (name: any) => {
         switch (name) {
@@ -24,17 +24,12 @@ export default function Connect({ name }: any) {
     }
 
     async function signInWithTwitter() {
-        // const { data, error } = await supabase.auth.signInWithOAuth({
-        //     provider: 'twitter',
-        //     options: {
-        //         redirectTo: getURL(),
-        //     }
-        // });
-        // Step 1: post request token
-        const request = await fetch('https://influencer-tools.vercel.app/api/twitter/request');
-        const data = await request.json();
-        console.log(data);
-
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'twitter',
+            options: {
+                redirectTo: getURL(),
+            }
+        });
     }
 
     async function signInWithInstagram() {}

@@ -3,16 +3,17 @@ import { NextResponse } from 'next/server';
 export async function GET() {
     const twitter_api = 'https://api.twitter.com/';
 
-    const req_token = await fetch(twitter_api + 'oauth/request_token', {
+    const request = {
         method: 'POST',
-        body: JSON.stringify({
-            oauth_callback: encodeURI('https://influencer-tools.vercel.app/dashboard/post'),
-            oauth_consumer_key: process.env.NEXT_PUBLIC_TWITTER_API_KEY
-        }),
         headers: {
             'Content-Type': 'application/json',
-        }
-    });
+        },
+        body: JSON.stringify({
+            'oauth_callback': encodeURI('https://influencer-tools.vercel.app/dashboard/post')
+        })
+    }
+
+    const req_token = await fetch(twitter_api + 'oauth/request_token', request);
 
     const token_data = await req_token.json();
 

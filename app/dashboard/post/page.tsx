@@ -8,10 +8,11 @@ export default function page() {
   const [firstGenerate, setFirstGenerate] = useState(false);
   const [userInput, setUserInput] = useState('');
 
-  function getToken() {
+  function getTokens() {
     const url = window.location.href;
-    const token = url.split('=')[1].split('&')[0];
-    return token;
+    const accessToken = url.split('access_token=')[1].split('&')[0];
+    const secretToken = url.split('refresh_token=')[1].split('&')[0];
+    return { accessToken, secretToken };
   }
 
   const getData = async () => {
@@ -72,13 +73,15 @@ export default function page() {
     // const response = await fetch(API as string, requestOptions);
     // const data = await response.json();
     // return data;
+
+
     const response = await fetch('https://influencer-tools.vercel.app/api/tweet', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
-      body: JSON.stringify({ text: text, token: getToken()})
+      body: JSON.stringify({ text: text, tokens: getTokens()})
     });
     return response.json();
   }
