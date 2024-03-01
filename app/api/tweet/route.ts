@@ -7,8 +7,8 @@ export async function POST(request: Request) {
     const text = body.text;
 
     const client = new TwitterApi({
-        appKey: process.env.TWITTER_API_KEY as string,
-        appSecret: process.env.TWITTER_API_SECRET as string,
+        appKey: process.env.NEXT_PUBLIC_TWITTER_API_KEY as string,
+        appSecret: process.env.NEXT_PUBLIC_TWITTER_API_SECRET as string,
         accessToken: access_token,
         accessSecret: secret_token
     });
