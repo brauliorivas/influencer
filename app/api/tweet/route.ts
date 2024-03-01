@@ -24,8 +24,9 @@ export async function POST(request: Request) {
     // const response = await fetch(API as string, requestOptions);
     // const data = await response.json();
     const client = new TwitterApi(token);
+    const rwClient = client.readWrite;
 
-    const response = await client.v2.tweet(text);
+    const response = await rwClient.v2.tweet(text);
 
     return NextResponse.json(response);
 }
