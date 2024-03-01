@@ -8,7 +8,10 @@ export async function GET() {
         body: JSON.stringify({
             oauth_callback: encodeURI('https://influencer-tools.vercel.app/dashboard/post'),
             oauth_consumer_key: process.env.NEXT_PUBLIC_TWITTER_API_KEY
-        })
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        }
     });
 
     const token_data = await req_token.json();
