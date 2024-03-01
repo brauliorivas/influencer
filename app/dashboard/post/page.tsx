@@ -53,27 +53,34 @@ export default function page() {
   }
 
   async function tweet() {
-    const API = 'https://api.twitter.com/2/tweets';
-    // Call your publish function here
-    // post tweet to twitter using users access token
-    const token = getToken();
-    const auth = `Bearer ${token}`;
+    // const API = 'https://api.twitter.com/2/tweets';
+    // const token = getToken();
+    // const auth = `Bearer ${token}`;
 
-    const json = JSON.stringify({ 'text': text });
+    // const json = JSON.stringify({ 'text': text });
 
-    const requestOptions = {
+    // const requestOptions = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Authorization': auth,
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   },
+    //   body: json
+    // };
+
+    // const response = await fetch(API as string, requestOptions);
+    // const data = await response.json();
+    // return data;
+    const response = await fetch('localhost:3000/api/tweet', {
       method: 'POST',
       headers: {
-        'Authorization': auth,
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
-      body: json
-    };
-
-    const response = await fetch(API as string, requestOptions);
-    const data = await response.json();
-    return data;
+      body: JSON.stringify({ text: text, token: getToken()})
+    });
+    return response.json();
   }
 
 
