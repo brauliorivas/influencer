@@ -2,6 +2,8 @@
 
 Accelerate your workflow as an influencer with **Influencer**! This powerful tool empowers you to seamlessly connect your favorite social networks, enabling you to publish multiple posts on each platform with personalized content, all while leveraging Cohere's cutting-edge services. Not only does it streamline your content creation process, but it also provides in-depth analytics based on the sentiments of each post.
 
+[Visit Website](https://influencer-tools.vercel.app/)
+
 ## Demo
 
 [Insert demo video here]
