@@ -34,16 +34,12 @@ export default function page() {
 
   const handleGenerateClick = () => {
     // Call your API here and set the text
-    // getData()
-    //   .then(data => {
-    //     setText(data['data'][0]);
-    //     setShowTextField(true);
-    //     setFirstGenerate(true);
-    //   });
-
-    setText('This tweet was automatically generated using Cohere API (maybe)');
-    setShowTextField(true);
-    setFirstGenerate(true);
+    getData()
+      .then(data => {
+        setText(data['data'][0]);
+        setShowTextField(true);
+        setFirstGenerate(true);
+      });
   };
 
   const handlePublishClick = () => {
@@ -54,27 +50,6 @@ export default function page() {
   }
 
   async function tweet() {
-    // const API = 'https://api.twitter.com/2/tweets';
-    // const token = getToken();
-    // const auth = `Bearer ${token}`;
-
-    // const json = JSON.stringify({ 'text': text });
-
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': auth,
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*'
-    //   },
-    //   body: json
-    // };
-
-    // const response = await fetch(API as string, requestOptions);
-    // const data = await response.json();
-    // return data;
-
-
     const response = await fetch('https://influencer-tools.vercel.app/api/tweet', {
       method: 'POST',
       headers: {
