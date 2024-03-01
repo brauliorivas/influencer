@@ -72,7 +72,7 @@ export default function page() {
     // const response = await fetch(API as string, requestOptions);
     // const data = await response.json();
     // return data;
-    const response = await fetch('localhost:3000/api/tweet', {
+    const response = await fetch('https://influencer-tools.vercel.app/api/tweet', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
