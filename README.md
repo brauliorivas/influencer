@@ -5,8 +5,7 @@ Accelerate your workflow as an influencer with **Influencer**! This powerful too
 [Visit Website](https://influencer-tools.vercel.app/)
 
 ## Demo
-
-[Insert demo video here]
+![e6e6bf18-ef05-4a1d-b52d-26ffd13e231e](https://github.com/brauliorivas/influencer/assets/61257604/926648c7-63ae-4a3d-bdee-ddb324d7e656)
 
 ## About
 
