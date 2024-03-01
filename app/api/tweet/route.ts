@@ -108,10 +108,8 @@ export async function POST(request: Request) {
     const text = body.text;
 
     // random 32 bytes
-    const randomBytes = new Uint8Array(32);
-    window.crypto.getRandomValues(randomBytes);
-    let binaryString = '';
-    randomBytes.forEach(byte => binaryString += String.fromCharCode(byte));
+    const randomBytes = crypto.randomBytes(32);
+    const binaryString = Buffer.from(randomBytes).toString('base64');
     const nonce = btoa(binaryString);
     const timestamp = Math.floor(Date.now() / 1000);
 
