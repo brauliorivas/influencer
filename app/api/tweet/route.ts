@@ -13,7 +13,9 @@ export async function POST(request: Request) {
         accessSecret: secret_token
     });
 
-    const response = await client.v2.tweet(text);
+    const rwClient = client.readWrite;
+
+    const response = await rwClient.v2.tweet(text);
 
     return NextResponse.json(response);
 }
